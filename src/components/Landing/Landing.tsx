@@ -15,9 +15,9 @@ const Landing = () => {
           <h1>
             <span>Hello!</span>
             <br />
-            <span>I'm Samyog</span>
+            <span>I&apos;m Samyog</span>
           </h1>
-          <h2>I'm a Nepal, Kathmandu based Software Engineer.</h2>
+          <h2>I&apos;m a Nepal, Kathmandu based Software Engineer.</h2>
           {/* <Link smooth to='/#portfolio'> */}
           <Button input={'See my work'} />
           {/* </Link> */}
