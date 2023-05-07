@@ -1,17 +1,24 @@
-import { useState, createContext } from 'react';
+import React from 'react';
 
-export const ThemeContext = createContext();
+type ThemeContextType = {
+  isLight: boolean;
+  handleSetIsLight: () => void;
+};
 
-export const ThemeProvider = ({ children }) => {
-  // const theme = window.matchMedia('(prefers-color-scheme: light').matches
-  //   ? true
-  //   : false;
+export const ThemeContext = React.createContext<ThemeContextType>({
+  isLight: false,
+  handleSetIsLight: () => {},
+});
 
-  const [isLight, setIsLight] = useState(true);
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+  const [isLight, setIsLight] = React.useState(false);
 
-  const handleSetIsLight = () => {
-    return isLight ? setIsLight(false) : setIsLight(true);
-  };
+  React.useEffect(() => {
+    setIsLight(!!window.matchMedia('(prefers-color-scheme: light').matches);
+  }, []);
+
+  const handleSetIsLight = () =>
+    isLight ? setIsLight(false) : setIsLight(true);
 
   return (
     <ThemeContext.Provider value={{ isLight, handleSetIsLight }}>
